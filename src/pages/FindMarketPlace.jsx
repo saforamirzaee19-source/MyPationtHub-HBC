@@ -3,21 +3,14 @@ import useLegacyScript from "../hooks/useLegacyScript.js";
 import MarketplaceCard from "../components/FindMarketCards.jsx";
 import ResultsTable from "../components/ResultTable.jsx";
 
-// These lightweight local SVGs keep the marketplace page self-contained.
-const foodImage = (color) => `data:image/svg+xml,${encodeURIComponent(
-  `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 360"><defs><linearGradient id="g" x2="0" y2="1"><stop stop-color="${color}"/><stop offset="1" stop-color="#f6e9d2"/></linearGradient></defs><rect width="640" height="360" fill="url(#g)"/><circle cx="320" cy="190" r="112" fill="#fff" opacity=".9"/><circle cx="320" cy="190" r="83" fill="#d9a441"/><ellipse cx="320" cy="179" rx="69" ry="54" fill="#79a95b"/><circle cx="292" cy="166" r="17" fill="#df6150"/><circle cx="345" cy="194" r="19" fill="#f1cf64"/><path d="M273 215q48 32 95-2" fill="none" stroke="#fff" stroke-width="9" stroke-linecap="round"/></svg>`
- )}`;
-const providerLogo = (label, color) => `data:image/svg+xml,${encodeURIComponent(
-  `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80"><rect width="80" height="80" rx="40" fill="${color}"/><text x="40" y="48" text-anchor="middle" font-family="Arial,sans-serif" font-size="23" font-weight="700" fill="white">${label}</text></svg>`
- )}`;
-const food1 = foodImage("#b7d9a5");
-const food2 = foodImage("#f0c16b");
-const food3 = foodImage("#8dc9b2");
-const food4 = foodImage("#e5a99a");
-const foodPandaLogo = providerLogo("FP", "#e84d5b");
-const grabLogo = providerLogo("G", "#14834a");
-const deliverooLogo = providerLogo("D", "#32b8b2");
-const minimalistLogo = providerLogo("M", "#333333");
+import food1 from "../assets/images/food-1.jpg";
+import food2 from "../assets/images/food-2.jpg";
+import food3 from "../assets/images/food-3.jpg";
+import food4 from "../assets/images/food-4.jpg";
+import foodPandaLogo from "../assets/images/foodPanda.png";
+import grabLogo from "../assets/images/grab.png";
+import deliverooLogo from "../assets/images/delevero.png";
+import minimalistLogo from "../assets/images/minimalist.jpg";
 
 // ---------- Data for the cards ----------
 const items = [
