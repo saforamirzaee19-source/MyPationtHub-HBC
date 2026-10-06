@@ -3,6 +3,7 @@ import Login from "./pages/Login.jsx";
 import Dashboard from "./pages/Dashboard.jsx";
 import FindDoctor from "./pages/FindDoctor.jsx";
 import FindClinic from "./pages/FindClinic.jsx";
+import FindMarketplaces from "./pages/FindMarketPlace.jsx";
 
 export default function App() {
   return (
@@ -11,6 +12,7 @@ export default function App() {
       <Route path="/dashboard" element={<Dashboard />} />
       <Route path="/find-doctor" element={<FindDoctor />} />
       <Route path="/find-clinic" element={<FindClinic />} />
+      <Route path="/find-marketplace" element={<FindMarketplaces />} />
     </Routes>
   );
 }
