@@ -1607,19 +1607,6 @@ body.dark-theme .doctor-book-button { background: #214b48; color: #a7ebd2; borde
 @media (max-width: 560px) { .hero-highlights { gap: 12px; }.doctor-result-grid { grid-template-columns: 1fr; }.doctors-specialty { padding: 20px; }.specialty-list { grid-template-columns: 1fr; }.hero-mark { display: none; } }
 
 
-/* Find Clinic page Style */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-body {
-    font-family: Arial, sans-serif;
-    background: #f7f8fa;
-    color: #334b73;
-}
-
 .clinic-page {
     width: 100%;
     max-width: 1250px;
@@ -2036,6 +2023,8 @@ body.dark-theme .clinic-page { background: #0f262b; }.dark-theme .clinic-page .f
 .health-metric-card .health-chart { height: 76px; margin: 0; }
 .health-chart .react-chart { height: 100%; }
 .dashboard-grid { min-height: auto; gap: 14px; }
+.dashboard-grid,
+.dashboard-doctors-card { margin-top: 20px; }
 .wellness-card, .appointment-chart-card { height: 300px; border-radius: 14px; }
 .chart-container { height: 250px; padding: 4px 18px 10px; }
 .dashboard-grid .card-header { margin: 0; }
@@ -2685,3 +2674,593 @@ body.dark-theme .site-footer {
 body.dark-theme .site-footer .links a:hover,
 body.dark-theme .options-row a,
 body.dark-theme .login-footer a:hover { color: #86efac; }
+/* Shared responsive refinements */
+@media (max-width: 900px) {
+  .main,
+  .content,
+  .doctor-page,
+  .clinic-page,
+  .offers-page {
+    min-width: 0;
+  }
+
+  .offers-page__grid,
+  .dashboard__grid,
+  .stats-grid,
+  .grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .dashboard-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .offers-page__grid > *,
+  .service-grid > *,
+  .clinic-content > *,
+  .dashboard-grid > *,
+  .grid > * {
+    min-width: 0;
+  }
+
+  .results-table-wrap {
+    max-width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .results-table {
+    min-width: 760px;
+  }
+
+  .doctor-search-panel {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .doctor-search-panel > * {
+    min-width: 0;
+  }
+
+  .doctor-search-panel button {
+    width: 100%;
+  }
+
+  .clinic-search-area {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 600px) {
+  body {
+    overflow-x: hidden;
+  }
+
+  .topbar {
+    padding: 14px;
+  }
+
+  .topbar-left,
+  .topbar-right {
+    min-width: 0;
+    width: 100%;
+  }
+
+  .topbar-right {
+    gap: 10px;
+    justify-content: space-between;
+  }
+
+  .topbar-right input {
+    min-width: 0;
+    flex: 1 1 100%;
+  }
+
+  .offers-page {
+    padding: 18px 14px;
+  }
+
+  .offers-page__grid,
+  .dashboard-grid,
+  .dashboard__grid,
+  .stats-grid,
+  .grid,
+  .doctor-search-panel,
+  .clinic-search-area {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .offers-page__title {
+    font-size: clamp(1.2rem, 5vw, 1.6rem);
+  }
+
+  .results-panel {
+    padding: 16px 12px;
+  }
+
+  .results-toolbar {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 10px;
+  }
+
+  .results-search,
+  .results-control {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .results-table-wrap {
+    margin-inline: -4px;
+  }
+
+  .site-footer {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .dependent-profile ol {
+    margin-inline: -8px;
+  }
+
+  .dependent-profile ol li > span:last-child {
+    font-size: 10px;
+    line-height: 1.35;
+  }
+
+  .dependent-profile form > div:last-child {
+    gap: 10px;
+  }
+
+  .dependent-profile form > div:last-child button {
+    min-width: 0;
+    flex: 1;
+    padding-inline: 12px;
+  }
+
+  .appointment,
+  .doctor-info,
+  .appointment-date {
+    min-width: 0;
+  }
+
+  .appointment {
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .appointment-date {
+    flex: 1 1 100%;
+    gap: 8px;
+    justify-content: flex-end;
+  }
+
+  .appointment-date span {
+    display: block;
+    white-space: normal;
+    overflow-wrap: anywhere;
+  }
+
+  .clinic-content .filters {
+    order: 0;
+  }
+
+  .clinic-content .clinic-results {
+    order: 1;
+  }
+
+  .clinic-results-heading {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .clinic-results-heading > span {
+    align-self: flex-start;
+  }
+
+  img,
+  video,
+  canvas {
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 380px) {
+  .topbar-right {
+    justify-content: flex-start;
+  }
+
+  .topbar-right input {
+    flex-basis: 100%;
+  }
+
+  .dependent-profile ol li > span:last-child {
+    font-size: 9px;
+  }
+}
+
+/* Midnight plum surfaces with soft rose and champagne accents. */
+body.light-theme {
+  color-scheme: light;
+}
+
+body.dark-theme {
+  color-scheme: dark;
+  --surface-page: #120f17;
+  --surface-card: #1d1822;
+  --surface-raised: #28212d;
+  --surface-input: #17131c;
+  --text-main: #f8f1f6;
+  --text-muted: #c4b5c0;
+  --border-color: #3b303e;
+  --accent-color: #f08ab9;
+  --accent-soft: #49283d;
+  background: var(--surface-page);
+  color: var(--text-main);
+}
+
+body.dark-theme.login-page {
+  background: var(--surface-page);
+  color: var(--text-main);
+}
+
+body.dark-theme .dashboard-layout,
+body.dark-theme .main,
+body.dark-theme .content,
+body.dark-theme .doctor-page,
+body.dark-theme .clinic-page,
+body.dark-theme .offers-page,
+body.dark-theme .dependent-profile {
+  background: var(--surface-page);
+  color: var(--text-main);
+}
+
+body.dark-theme .login-hero,
+body.dark-theme .find-doctor-hero,
+body.dark-theme .clinic-hero {
+  background: linear-gradient(125deg, #3a2036, #713454 55%, #9a5a72);
+}
+
+body.dark-theme .sidebar {
+  background: #19131d;
+  color: #e5d7e1;
+}
+
+body.dark-theme .sidebar nav a,
+body.dark-theme .sidebar-logo {
+  color: #e5d7e1;
+}
+
+body.dark-theme .sidebar nav a.active,
+body.dark-theme .sidebar.collapsed nav a.active .icon {
+  border-left-color: var(--accent-color);
+  background: var(--accent-soft);
+  color: #fff5fb;
+}
+
+body.dark-theme .sidebar-help,
+body.dark-theme .sidebar-help-mini,
+body.dark-theme .sidebar-toggle:hover,
+body.dark-theme .sidebar-toggle:focus-visible,
+body.dark-theme .sidebar-toggle.is-active {
+  background: linear-gradient(125deg, #8d3d68, #bd5a88 55%, #d58b9c);
+}
+
+body.dark-theme .topbar {
+  border-bottom: 1px solid var(--border-color);
+  background: #1b1520;
+}
+
+body.dark-theme .topbar h2,
+body.dark-theme .topbar .crumbs,
+body.dark-theme .topbar-right .logout {
+  color: var(--text-main);
+}
+
+body.dark-theme .hamburger-icon span {
+  background: var(--text-main);
+}
+
+body.dark-theme .topbar-right input,
+body.dark-theme .notification-toggle,
+body.dark-theme .notification-panel,
+body.dark-theme .theme-toggle {
+  border-color: var(--border-color);
+  background: var(--surface-raised);
+  color: var(--text-main);
+}
+
+body.dark-theme .theme-toggle {
+  border-color: var(--border-color);
+}
+
+body.dark-theme .notification-panel h3,
+body.dark-theme .information-item p {
+  color: var(--text-main);
+}
+
+body.dark-theme .information-item,
+body.dark-theme .site-footer {
+  border-color: var(--border-color);
+}
+
+body.dark-theme .login-card,
+body.dark-theme .card,
+body.dark-theme .doctor-search-panel,
+body.dark-theme .doctor-page .service-card,
+body.dark-theme .doctor-result-card,
+body.dark-theme .doctors-specialty,
+body.dark-theme .clinic-search-area,
+body.dark-theme .clinic-page .filter-box,
+body.dark-theme .clinic-page .clinic-card,
+body.dark-theme .clinic-page .clinic-result-card,
+body.dark-theme .doctor-page .card,
+body.dark-theme .dashboard-grid .card,
+body.dark-theme .grid .card,
+body.dark-theme .promotion-card,
+body.dark-theme .health-metric-card,
+body.dark-theme .previous-card,
+body.dark-theme .appointment-chart-card,
+body.dark-theme .wellness-card,
+body.dark-theme .map-card,
+body.dark-theme .offers-page__section,
+body.dark-theme .marketplace-card,
+body.dark-theme .results-panel,
+body.dark-theme .dependent-profile form {
+  border-color: var(--border-color);
+  background: var(--surface-card);
+  color: var(--text-main);
+}
+
+body.dark-theme .login-card h2,
+body.dark-theme .login-card label,
+body.dark-theme .doctor-page h2,
+body.dark-theme .doctor-page h3,
+body.dark-theme .doctor-result-card h3,
+body.dark-theme .clinic-page h2,
+body.dark-theme .clinic-page h3,
+body.dark-theme .dashboard-grid .card-header h2,
+body.dark-theme .grid .card h3,
+body.dark-theme .offers-page__title,
+body.dark-theme .marketplace-card__name,
+body.dark-theme .marketplace-card__category,
+body.dark-theme .dependent-profile h1,
+body.dark-theme .dependent-profile h2,
+body.dark-theme .dependent-profile label {
+  color: var(--text-main);
+}
+
+body.dark-theme .login-footer,
+body.dark-theme .options-row,
+body.dark-theme .doctor-detail,
+body.dark-theme .doctor-meta,
+body.dark-theme .header-specialty p:last-child,
+body.dark-theme .clinic-filter-label,
+body.dark-theme .filter-box .checkbox,
+body.dark-theme .clinic-info p,
+body.dark-theme .clinic-status,
+body.dark-theme .doctor-page .service-card p,
+body.dark-theme .dashboard-grid .card p,
+body.dark-theme .grid .card p,
+body.dark-theme .marketplace-card__description,
+body.dark-theme .dependent-profile header > p,
+body.dark-theme .dependent-profile form > p {
+  color: var(--text-muted);
+}
+
+body.dark-theme .login-card input,
+body.dark-theme .doctor-page input,
+body.dark-theme .doctor-page select,
+body.dark-theme .clinic-page input,
+body.dark-theme .clinic-page select,
+body.dark-theme .results-search,
+body.dark-theme .results-control select,
+body.dark-theme .dependent-profile input,
+body.dark-theme .dependent-profile select,
+body.dark-theme .dependent-profile textarea,
+body.dark-theme .search-field input,
+body.dark-theme .filter-box select {
+  border-color: var(--border-color);
+  background: var(--surface-input);
+  color: var(--text-main);
+}
+
+body.dark-theme .login-card input[type="email"],
+body.dark-theme .login-card .password-field input {
+  border-color: var(--border-color);
+  background: var(--surface-input);
+  color: var(--text-main);
+}
+
+body.dark-theme input::placeholder,
+body.dark-theme textarea::placeholder {
+  color: #988897;
+}
+
+body.dark-theme .login-card input:focus,
+body.dark-theme .login-card input[type="email"]:focus,
+body.dark-theme .login-card .password-field input:focus,
+body.dark-theme .doctor-page input:focus,
+body.dark-theme .clinic-page input:focus,
+body.dark-theme .dependent-profile input:focus,
+body.dark-theme .dependent-profile select:focus,
+body.dark-theme .dependent-profile textarea:focus {
+  border-color: var(--accent-color);
+  box-shadow: 0 0 0 3px rgba(240, 138, 185, 0.16);
+}
+
+body.dark-theme .options-row a,
+body.dark-theme .login-footer a:hover {
+  color: var(--accent-color);
+}
+
+body.dark-theme .btn-signin,
+body.dark-theme .search-button,
+body.dark-theme .clinic-search-area .search-btn,
+body.dark-theme .marketplace-card__button {
+  border-color: transparent;
+  background: linear-gradient(120deg, #9c416f, #c25d8c 55%, #d88b9b);
+  color: #fff;
+}
+
+body.dark-theme .btn-signup {
+  background: linear-gradient(120deg, #4b354f, #69445f);
+  color: #fff;
+}
+
+body.dark-theme .marketplace-card__price,
+body.dark-theme .results-panel__eyebrow,
+body.dark-theme .results-panel__count,
+body.dark-theme .results-discount,
+body.dark-theme .doctor-specialty-name,
+body.dark-theme .clinic-type,
+body.dark-theme .availability,
+body.dark-theme .health-value .up {
+  color: var(--accent-color);
+}
+
+body.dark-theme .search-status,
+body.dark-theme .clinic-empty,
+body.dark-theme .clinic-results-heading > span,
+body.dark-theme .promotion-card .card-header h3,
+body.dark-theme .health-metric-card .card-header h3,
+body.dark-theme .info-mark,
+body.dark-theme .appointment-date,
+body.dark-theme .doctor-info p,
+body.dark-theme .doctor-info h3 {
+  color: var(--text-muted);
+}
+
+body.dark-theme .promotion-legend-item {
+  border-color: var(--border-color);
+  color: var(--text-muted);
+}
+
+body.dark-theme .promotion-legend-item strong {
+  color: var(--text-main);
+}
+
+body.dark-theme .dashboard table th,
+body.dark-theme .dashboard table td {
+  border-color: var(--border-color);
+  color: var(--text-muted);
+}
+
+body.dark-theme .dashboard table th {
+  background: var(--surface-raised);
+  color: var(--text-main);
+}
+
+body.dark-theme .dashboard table tr:hover {
+  background: #302332;
+}
+
+body.dark-theme .dashboard-doctors-card {
+  border: 1px solid var(--border-color);
+  background: var(--surface-card);
+  color: var(--text-main);
+}
+
+body.dark-theme .dashboard-doctors-card h3,
+body.dark-theme .dashboard-doctors-card li div div:last-child {
+  color: var(--text-main);
+}
+
+body.dark-theme .dashboard-doctors-card li {
+  border-color: var(--border-color);
+}
+
+body.dark-theme .dashboard-doctors-card li div div:first-child {
+  color: var(--text-muted);
+}
+
+body.dark-theme .doctor-page .service-card span,
+body.dark-theme .service-count,
+body.dark-theme .current-button,
+body.dark-theme .current-btn,
+body.dark-theme .view-buttons,
+body.dark-theme .clinic-tags span,
+body.dark-theme .clinic-card-icon,
+body.dark-theme .more-btn,
+body.dark-theme .doctor-book-button,
+body.dark-theme .clear-filters,
+body.dark-theme .specialty,
+body.dark-theme .view-btn.active,
+body.dark-theme .map-type.active {
+  border-color: #684153;
+  background: var(--accent-soft);
+  color: #f3b5d0;
+}
+
+body.dark-theme .doctor-book-button:hover,
+body.dark-theme .clear-filters:hover,
+body.dark-theme .specialty:hover,
+body.dark-theme .more-btn:hover {
+  border-color: var(--accent-color);
+  background: #5a3049;
+  color: #fff5fb;
+}
+
+body.dark-theme .map-view,
+body.dark-theme .map-toolbar,
+body.dark-theme .map-type,
+body.dark-theme .fullscreen {
+  border-color: var(--border-color);
+  background: var(--surface-card);
+  color: var(--text-muted);
+}
+
+body.dark-theme .results-table-wrap {
+  border-color: var(--border-color);
+}
+
+body.dark-theme .results-table th {
+  border-color: var(--border-color);
+  background: var(--surface-raised);
+  color: var(--text-main);
+}
+
+body.dark-theme .results-table td {
+  border-color: var(--border-color);
+  color: var(--text-muted);
+}
+
+body.dark-theme .results-row:hover {
+  background: #302332;
+}
+
+body.dark-theme .results-product span,
+body.dark-theme .results-provider span,
+body.dark-theme .results-price {
+  color: var(--text-main);
+}
+
+body.dark-theme .results-discount,
+body.dark-theme .results-panel__count {
+  border-color: #684153;
+  background: var(--accent-soft);
+}
+
+body.dark-theme .site-footer {
+  background: #19131d;
+  color: var(--text-muted);
+}
+
+body.dark-theme .error-msg {
+  border: 1px solid #743e56;
+  background: #3b202e;
+  color: #ffc4d6;
+}
+
+body.dark-theme .divider {
+  color: #b8a6b3;
+}
+
+body.dark-theme .divider::before,
+body.dark-theme .divider::after {
+  background: var(--border-color);
+}
+
+body.dark-theme .dependent-profile ol li > span:last-child {
+  color: var(--text-muted);
+}
