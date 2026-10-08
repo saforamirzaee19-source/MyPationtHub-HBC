@@ -39,6 +39,7 @@ export default function ReactCharts({
   type = "line",
   labels,
   datasets,
+  height,
   options = {},
   className = "react-chart",
   ariaLabel = "Interactive chart",
@@ -51,7 +52,12 @@ export default function ReactCharts({
   };
 
   return (
-    <div className={className} role="img" aria-label={ariaLabel}>
+    <div
+      className={className}
+      style={height ? { height } : undefined}
+      role="img"
+      aria-label={ariaLabel}
+    >
       <Chart
         type={type}
         data={data}

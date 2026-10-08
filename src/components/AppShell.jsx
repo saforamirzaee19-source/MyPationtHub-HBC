@@ -4,7 +4,12 @@ import { FaBell } from "react-icons/fa";
 import Information from "./Information.jsx";
 const NAV_ITEMS = [
   { href: "/dashboard", icon: "🏠", label: "Dashboard", key: "dashboard" },
-  { href: "#", icon: "📅", label: "Appointments", key: "appointments" },
+  {
+    href: "/appointment",
+    icon: "📅",
+    label: "Appointments",
+    key: "appointments",
+  },
   {
     href: "/find-doctor",
     icon: "🩺",
@@ -30,12 +35,17 @@ const NAV_ITEMS = [
     key: "pharmacy",
   },
   {
-    href: "/my-dependets",
+    href: "/my-dependents",
     icon: "👪",
     label: "My Dependents",
     key: "dependents",
   },
-  { href: "#", icon: "👤", label: "My Account", key: "account" },
+  {
+    href: "/#",
+    icon: "👤",
+    label: "My Account",
+    key: "account",
+  },
   { href: "#", icon: "⚙️", label: "Settings", key: "settings" },
 ];
 
@@ -82,7 +92,14 @@ function Sidebar({ activeKey, collapsed, open, onNavigate }) {
   );
 }
 
-function Topbar({ crumb, title, onToggleSidebar, sidebarExpanded }) {
+function Topbar({
+  crumb,
+  title,
+  onToggleSidebar,
+  sidebarExpanded,
+  theme,
+  onToggleTheme,
+}) {
   const [notificationsOpen, setNotificationsOpen] = useState(false);
   return (
     <div className="topbar">
@@ -112,10 +129,12 @@ function Topbar({ crumb, title, onToggleSidebar, sidebarExpanded }) {
         <button
           className="theme-toggle"
           type="button"
-          aria-label="Toggle dark mode"
+          data-react-theme-toggle="true"
+          aria-label={theme === "dark" ? "Switch to light mode" : "Switch to dark mode"}
+          onClick={onToggleTheme}
         >
-          <span className="toggle-icon">🌙</span>
-          <span className="toggle-text">Dark</span>
+          <span className="toggle-icon">{theme === "dark" ? "☀️" : "🌙"}</span>
+          <span className="toggle-text">{theme === "dark" ? "Light" : "Dark"}</span>
         </button>
         <div className="notification-menu">
           <button
@@ -165,12 +184,25 @@ export function SiteFooter() {
 }
 
 export default function AppShell({ activeKey, crumb, title, children }) {
+  const [theme, setTheme] = useState(() => {
+    const savedTheme = localStorage.getItem("theme");
+    if (savedTheme === "dark" || savedTheme === "light") return savedTheme;
+    return window.matchMedia("(prefers-color-scheme: dark)").matches
+      ? "dark"
+      : "light";
+  });
   const [collapsed, setCollapsed] = useState(
     () =>
       window.innerWidth > 1000 &&
       localStorage.getItem("sidebarCollapsed") === "1",
   );
   const [mobileOpen, setMobileOpen] = useState(false);
+
+  useEffect(() => {
+    document.body.classList.toggle("dark-theme", theme === "dark");
+    document.body.classList.toggle("light-theme", theme === "light");
+    localStorage.setItem("theme", theme);
+  }, [theme]);
 
   useEffect(() => {
     const handleResize = () => {
@@ -212,6 +244,8 @@ export default function AppShell({ activeKey, crumb, title, children }) {
   };
 
   const closeMobileSidebar = () => setMobileOpen(false);
+  const toggleTheme = () =>
+    setTheme((currentTheme) => (currentTheme === "dark" ? "light" : "dark"));
 
   return (
     <div className="dashboard-layout">
@@ -232,6 +266,8 @@ export default function AppShell({ activeKey, crumb, title, children }) {
           title={title}
           onToggleSidebar={toggleSidebar}
           sidebarExpanded={window.innerWidth <= 1000 ? mobileOpen : !collapsed}
+          theme={theme}
+          onToggleTheme={toggleTheme}
         />
         {children}
       </div>
