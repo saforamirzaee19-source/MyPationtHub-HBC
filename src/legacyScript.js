@@ -42,7 +42,9 @@ if (loginForm) {
 }
 
 // Dark Mode 
-const themeButtons = document.querySelectorAll(".theme-toggle");
+const themeButtons = document.querySelectorAll(
+  '.theme-toggle:not([data-react-theme-toggle="true"])'
+);
 
 function applyTheme(theme) {
   const selectedTheme = theme === "dark" ? "dark" : "light";
