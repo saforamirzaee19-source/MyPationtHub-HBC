@@ -399,7 +399,7 @@ function Transactions() {
 export default function MyAccount() {
   return (
     <AppShell activeKey="account" crumb="My Account" title="My Account">
-      <main className="content min-h-0 bg-slate-50">
+      <main className="content my-account-page min-h-0 bg-slate-50">
         <div className="mx-auto max-w-7xl space-y-6">
           {/* top: cards + invoices */}
           <div className="grid gap-6 xl:grid-cols-12">

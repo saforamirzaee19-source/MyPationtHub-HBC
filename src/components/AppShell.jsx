@@ -52,7 +52,7 @@ const NAV_ITEMS = [
     label: "My Account",
     key: "account",
   },
-  { href: "#", icon: "⚙️", label: "Settings", key: "settings" },
+  { href: "/sitting", icon: "⚙️", label: "Settings", key: "settings" },
 ];
 
 function Sidebar({ activeKey, collapsed, open, onNavigate }) {

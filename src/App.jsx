@@ -9,6 +9,7 @@ import MyDependents from "./pages/Mydependets.jsx";
 import Appointment from "./pages/Appointment.jsx";
 import Chat from "./pages/Chat.jsx";
 import MyAccount from "./pages/MyAccount.jsx";
+import Sitting from "./pages/Sitting.jsx";
 
 export default function App() {
   return (
@@ -23,6 +24,7 @@ export default function App() {
       <Route path="/appointment" element={<Appointment />} />
       <Route path="/chat" element={<Chat />} />
       <Route path="/my-account" element={<MyAccount />} />
+      <Route path="/sitting" element={<Sitting />} />
     </Routes>
   );
 }
