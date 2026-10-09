@@ -23,6 +23,12 @@ const NAV_ITEMS = [
     key: "find-clinic",
   },
   {
+    href: "/chat",
+    icon: "💬",
+    label: "Chat",
+    key: "chat",
+  },
+  {
     href: "/find-marketplace",
     icon: "🛒",
     label: "Find MarketPlace",
@@ -130,11 +136,15 @@ function Topbar({
           className="theme-toggle"
           type="button"
           data-react-theme-toggle="true"
-          aria-label={theme === "dark" ? "Switch to light mode" : "Switch to dark mode"}
+          aria-label={
+            theme === "dark" ? "Switch to light mode" : "Switch to dark mode"
+          }
           onClick={onToggleTheme}
         >
           <span className="toggle-icon">{theme === "dark" ? "☀️" : "🌙"}</span>
-          <span className="toggle-text">{theme === "dark" ? "Light" : "Dark"}</span>
+          <span className="toggle-text">
+            {theme === "dark" ? "Light" : "Dark"}
+          </span>
         </button>
         <div className="notification-menu">
           <button

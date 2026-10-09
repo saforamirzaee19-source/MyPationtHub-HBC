@@ -7,6 +7,7 @@ import FindMarketplaces from "./pages/FindMarketPlace.jsx";
 import FindPharmacy from "./pages/FindPharmacy.jsx";
 import MyDependents from "./pages/Mydependets.jsx";
 import Appointment from "./pages/Appointment.jsx";
+import Chat from "./pages/Chat.jsx";
 
 export default function App() {
   return (
@@ -19,6 +20,7 @@ export default function App() {
       <Route path="/find-pharmacy" element={<FindPharmacy />} />
       <Route path="/my-dependents" element={<MyDependents />} />
       <Route path="/appointment" element={<Appointment />} />
+      <Route path="/chat" element={<Chat />} />
     </Routes>
   );
 }
