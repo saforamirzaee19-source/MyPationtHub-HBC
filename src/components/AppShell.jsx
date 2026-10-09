@@ -47,7 +47,7 @@ const NAV_ITEMS = [
     key: "dependents",
   },
   {
-    href: "/#",
+    href: "/my-account",
     icon: "👤",
     label: "My Account",
     key: "account",

@@ -801,17 +801,17 @@ body.dark-theme .content > h1 {
 }
 
 /* Grid of dashboard cards */
-.grid {
+.dashboard-cards {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 22px;
 }
 
-.grid > * {
+.dashboard-cards > * {
   min-width: 0;
 }
 
-.grid > *:last-child {
+.dashboard-cards > *:last-child {
   grid-column: 1 / -1;
 }
 
@@ -1433,7 +1433,7 @@ body.dark-theme .marketplace-card__description {
     gap: 10px;
   }
 
-  .grid {
+  .dashboard-cards {
     grid-template-columns: 1fr;
     gap: 18px;
   }
@@ -2000,8 +2000,8 @@ body.dark-theme .clinic-page { background: #0f262b; }.dark-theme .clinic-page .f
 @media (max-width: 620px) { .clinic-page { padding: 18px 14px; }.clinic-search-area { grid-template-columns: 1fr; }.clinic-search-area button { width: 100%; }.clinic-status { grid-column: auto; }.view-buttons { margin-top: 22px; }.clinic-card { grid-template-columns: 42px 1fr; }.clinic-card-icon { width: 42px; height: 42px; }.clinic-directions { grid-column: 2; width: max-content; }.map-view, #clinicMap { min-height: 420px; height: 420px; }.clinic-results-heading { align-items: flex-start; flex-direction: column; } }
 
 /* Dashboard layout matched to the reference screenshot */
-.grid { grid-template-columns: repeat(2, minmax(0, 1fr)); align-items: stretch; gap: 14px; }
-.grid > *:last-child { grid-column: auto; }
+.dashboard-cards { grid-template-columns: repeat(2, minmax(0, 1fr)); align-items: stretch; gap: 14px; }
+.dashboard-cards > *:last-child { grid-column: auto; }
 .promotion-card { min-height: 302px; padding: 12px; border-radius: 14px; display: flex; flex-direction: column; }
 .promotion-card .card-header { margin: 0 0 10px; padding: 0; min-height: 22px; }
 .promotion-card .card-header h3, .health-metric-card .card-header h3 { color: #405675; font-size: 13px; font-weight: 600; }
@@ -2030,7 +2030,7 @@ body.dark-theme .clinic-page { background: #0f262b; }.dark-theme .clinic-page .f
 .dashboard-grid .card-header { margin: 0; }
 .dashboard-grid .card-header h2 { color: #334b65; font-size: 14px; }
 @media (max-width: 900px) {
-  .grid { grid-template-columns: 1fr; }
+  .dashboard-cards { grid-template-columns: 1fr; }
   .health-stack { grid-column: auto; }
   .promotion-card { min-height: 300px; }
   .dashboard-grid { grid-template-columns: 1fr; }
@@ -2686,8 +2686,7 @@ body.dark-theme .login-footer a:hover { color: #86efac; }
 
   .offers-page__grid,
   .dashboard__grid,
-  .stats-grid,
-  .grid {
+  .stats-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
@@ -2699,7 +2698,7 @@ body.dark-theme .login-footer a:hover { color: #86efac; }
   .service-grid > *,
   .clinic-content > *,
   .dashboard-grid > *,
-  .grid > * {
+  .dashboard-cards > * {
     min-width: 0;
   }
 
@@ -2763,7 +2762,6 @@ body.dark-theme .login-footer a:hover { color: #86efac; }
   .dashboard-grid,
   .dashboard__grid,
   .stats-grid,
-  .grid,
   .doctor-search-panel,
   .clinic-search-area {
     grid-template-columns: minmax(0, 1fr);
@@ -2996,7 +2994,7 @@ body.dark-theme .clinic-page .clinic-card,
 body.dark-theme .clinic-page .clinic-result-card,
 body.dark-theme .doctor-page .card,
 body.dark-theme .dashboard-grid .card,
-body.dark-theme .grid .card,
+body.dark-theme .dashboard-cards .card,
 body.dark-theme .promotion-card,
 body.dark-theme .health-metric-card,
 body.dark-theme .previous-card,
@@ -3020,7 +3018,7 @@ body.dark-theme .doctor-result-card h3,
 body.dark-theme .clinic-page h2,
 body.dark-theme .clinic-page h3,
 body.dark-theme .dashboard-grid .card-header h2,
-body.dark-theme .grid .card h3,
+body.dark-theme .dashboard-cards .card h3,
 body.dark-theme .offers-page__title,
 body.dark-theme .marketplace-card__name,
 body.dark-theme .marketplace-card__category,
@@ -3041,7 +3039,7 @@ body.dark-theme .clinic-info p,
 body.dark-theme .clinic-status,
 body.dark-theme .doctor-page .service-card p,
 body.dark-theme .dashboard-grid .card p,
-body.dark-theme .grid .card p,
+body.dark-theme .dashboard-cards .card p,
 body.dark-theme .marketplace-card__description,
 body.dark-theme .dependent-profile header > p,
 body.dark-theme .dependent-profile form > p {
