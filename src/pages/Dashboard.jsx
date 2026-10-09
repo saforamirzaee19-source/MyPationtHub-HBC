@@ -285,7 +285,7 @@ export default function Dashboard() {
       <div className="content">
         <h1>Welcome To MyPatientHUB!</h1>
 
-        <div className="grid">
+        <div className="dashboard-cards">
           <PromotionCard
             title="Promotion by Clinics"
             labels={clinicLabels}
