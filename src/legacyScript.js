@@ -96,12 +96,13 @@ const emptyServices = document.getElementById("emptyServices");
 const doctorResultGrid = document.getElementById("doctorResultGrid");
 const doctorResultCount = document.getElementById("doctorResultCount");
 const emptyDoctors = document.getElementById("emptyDoctors");
+const doctorAvatars = doctorResultGrid?.dataset;
 
 const doctorDirectory = [
-  { name: "Dr. Maya Patel", specialty: "Internal Medicine", detail: "Preventive care and wellness", rating: "4.9", reviews: 128, next: "Today, 2:30 PM", initials: "MP", color: "mint" },
-  { name: "Dr. Jonathan Reed", specialty: "Dermatology", detail: "Skin health and screenings", rating: "4.8", reviews: 96, next: "Tomorrow, 9:00 AM", initials: "JR", color: "blue" },
-  { name: "Dr. Amina Okafor", specialty: "Neurology", detail: "Headache and sleep care", rating: "4.9", reviews: 84, next: "Thu, 11:15 AM", initials: "AO", color: "coral" },
-  { name: "Dr. Elena Torres", specialty: "Emergency Medicine", detail: "Urgent care for all ages", rating: "4.7", reviews: 112, next: "Today, 4:00 PM", initials: "ET", color: "gold" }
+  { name: "Dr. Maya Patel", specialty: "Internal Medicine", detail: "Preventive care and wellness", rating: "4.9", reviews: 128, next: "Today, 2:30 PM", initials: "MP", avatar: doctorAvatars?.mayaAvatar, color: "mint" },
+  { name: "Dr. Jonathan Reed", specialty: "Dermatology", detail: "Skin health and screenings", rating: "4.8", reviews: 96, next: "Tomorrow, 9:00 AM", initials: "JR", avatar: doctorAvatars?.jonathanAvatar, color: "blue" },
+  { name: "Dr. Amina Okafor", specialty: "Neurology", detail: "Headache and sleep care", rating: "4.9", reviews: 84, next: "Thu, 11:15 AM", initials: "AO", avatar: doctorAvatars?.aminaAvatar, color: "coral" },
+  { name: "Dr. Elena Torres", specialty: "Emergency Medicine", detail: "Urgent care for all ages", rating: "4.7", reviews: 112, next: "Today, 4:00 PM", initials: "ET", avatar: doctorAvatars?.elenaAvatar, color: "gold" }
 ];
 
 const renderDoctors = (query = "") => {
@@ -116,7 +117,7 @@ const renderDoctors = (query = "") => {
   doctorResultGrid.innerHTML = matchingDoctors.map((doctor) => `
     <article class="doctor-result-card">
       <div class="doctor-card-top">
-        <span class="doctor-avatar ${doctor.color}">${doctor.initials}</span>
+        <img class="doctor-avatar ${doctor.color}" src="${doctor.avatar}" alt="${doctor.name}" />
         <span class="availability"><i></i> Accepting patients</span>
       </div>
       <h3>${doctor.name}</h3>
