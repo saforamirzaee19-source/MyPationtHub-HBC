@@ -328,6 +328,11 @@ body.dark-theme .login-footer a {
 /* --- Sidebar --- */
 .sidebar {
   width: 230px;
+  height: 100vh;
+  max-height: 100vh;
+  position: sticky;
+  top: 0;
+  align-self: flex-start;
   background: #241a3d;
   color: #cfc9e0;
   display: flex;
@@ -335,7 +340,24 @@ body.dark-theme .login-footer a {
   flex-shrink: 0;
   overflow-x: hidden;
   overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: #cbd5e1 transparent;
   transition: width 0.25s ease, transform 0.25s ease;
+}
+
+.sidebar::-webkit-scrollbar {
+  width: 8px;
+}
+
+.sidebar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.sidebar::-webkit-scrollbar-thumb {
+  border: 2px solid transparent;
+  border-radius: 999px;
+  background: #cbd5e1;
+  background-clip: padding-box;
 }
 
 .sidebar-logo {
@@ -390,6 +412,38 @@ body.dark-theme .login-footer a {
 
 .sidebar nav a:hover {
   background: rgba(255, 255, 255, 0.05);
+}
+
+body.light-theme .sidebar {
+  border-right: 1px solid #e8eaf0;
+  background: #fff;
+  color: #475569;
+  scrollbar-color: #cbd5e1 transparent;
+}
+
+body.light-theme .sidebar-logo {
+  border-bottom-color: #e8eaf0;
+  color: #2b2350;
+}
+
+body.light-theme .sidebar nav a {
+  color: #475569;
+}
+
+body.light-theme .sidebar nav a:hover {
+  background: #f5f3f8;
+}
+
+body.light-theme .sidebar nav a.active,
+body.light-theme .sidebar.collapsed nav a.active .icon {
+  border-left-color: #d6006e;
+  background: #fce7f3;
+  color: #9d174d;
+}
+
+body.light-theme .sidebar::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  background-clip: padding-box;
 }
 
 .sidebar nav a.active {
@@ -4153,6 +4207,137 @@ body.dark-theme .appointment-list-card li {
 body.dark-theme .appointment-list-card li > div:first-child {
   background: #293b52;
   color: #c2d9f3;
+}
+
+/* Shared shell, chat, account, and settings theme refinements. */
+body.dark-theme .sidebar {
+  border-right: 1px solid #382a3b;
+  background: #211824;
+  color: #e8dce8;
+  scrollbar-color: #705268 #211824;
+}
+
+body.dark-theme .sidebar-logo {
+  border-bottom-color: #382a3b;
+  color: #f8f1f6;
+}
+
+body.dark-theme .sidebar nav a {
+  color: #d6c8d5;
+}
+
+body.dark-theme .sidebar nav a:hover {
+  background: #302333;
+}
+
+body.dark-theme .sidebar nav a.active,
+body.dark-theme .sidebar.collapsed nav a.active .icon {
+  border-left-color: var(--accent-color);
+  background: var(--accent-soft);
+  color: #fff5fb;
+}
+
+body.dark-theme .sidebar-help,
+body.dark-theme .sidebar-help-mini {
+  background: linear-gradient(125deg, #6c3557, #9a4f73);
+}
+
+body.dark-theme .sidebar::-webkit-scrollbar-thumb {
+  background: #705268;
+  background-clip: padding-box;
+}
+
+body.dark-theme .chat-page,
+body.dark-theme .my-account-page,
+body.dark-theme .settings-page {
+  background: var(--surface-page);
+  color: var(--text-main);
+}
+
+body.dark-theme .chat-page [class~="bg-white"],
+body.dark-theme .my-account-page [class~="bg-white"],
+body.dark-theme .settings-page [class~="bg-white"],
+body.dark-theme .settings-page section {
+  border-color: var(--border-color);
+  background-color: var(--surface-card);
+  color: var(--text-main);
+}
+
+body.dark-theme .my-account-page [class~="bg-slate-50"],
+body.dark-theme .settings-page [class~="bg-slate-50"],
+body.dark-theme .chat-page button[class*="bg-[#f4f5f9]"],
+body.dark-theme .chat-page button[class*="bg-[#eceef4]"] {
+  background-color: var(--surface-raised);
+}
+
+body.dark-theme .chat-page [class*="text-[#33405f]"],
+body.dark-theme .my-account-page [class*="text-slate-700"],
+body.dark-theme .settings-page [class*="text-slate-700"],
+body.dark-theme .settings-page [class*="text-slate-800"] {
+  color: var(--text-main);
+}
+
+body.dark-theme .chat-page [class*="text-[#6b6f78]"],
+body.dark-theme .chat-page [class*="text-[#6d6d6d]"],
+body.dark-theme .my-account-page [class*="text-slate-600"],
+body.dark-theme .my-account-page [class*="text-slate-500"],
+body.dark-theme .my-account-page [class*="text-slate-400"],
+body.dark-theme .settings-page [class*="text-slate-600"],
+body.dark-theme .settings-page [class*="text-slate-500"],
+body.dark-theme .settings-page [class*="text-slate-400"] {
+  color: var(--text-muted);
+}
+
+body.dark-theme .chat-page input,
+body.dark-theme .my-account-page input,
+body.dark-theme .settings-page input,
+body.dark-theme .settings-page select {
+  border-color: var(--border-color);
+  background-color: var(--surface-input);
+  color: var(--text-main);
+}
+
+body.dark-theme .chat-page input::placeholder,
+body.dark-theme .my-account-page input::placeholder,
+body.dark-theme .settings-page input::placeholder {
+  color: #a99aa7;
+}
+
+body.dark-theme .chat-page button[class*="bg-[#f4f5f9]"]:hover,
+body.dark-theme .chat-page button[class*="bg-transparent"]:hover {
+  background-color: var(--surface-raised);
+}
+
+body.dark-theme .settings-page nav button:hover {
+  background-color: var(--surface-raised);
+}
+
+body.dark-theme .my-account-page [class*="border-slate-200"],
+body.dark-theme .my-account-page [class*="border-slate-300"],
+body.dark-theme .settings-page [class*="divide-slate-100"] > *,
+body.dark-theme .settings-page [class*="border-slate-300"] {
+  border-color: var(--border-color);
+}
+
+body.dark-theme .my-account-page [class*="via-slate-200"] {
+  --tw-gradient-to: transparent;
+  --tw-gradient-stops: var(--tw-gradient-from), var(--border-color), var(--tw-gradient-to);
+}
+
+@media (max-width: 640px) {
+  .chat-page aside {
+    max-height: 300px;
+  }
+
+  .settings-page > div {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+}
+
+.chat-page button,
+.settings-page nav button {
+  border: 0;
 }
 
 body.dark-theme .appointment-list-card [aria-label="Appointment actions"] {

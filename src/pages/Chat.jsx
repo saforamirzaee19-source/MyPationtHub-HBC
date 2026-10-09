@@ -497,8 +497,8 @@ export default function Chat() {
   const canSend = draft.trim().length > 0 && activeId != null;
 
   return (
-    <AppShell>
-      <div className="flex h-auto min-h-[560px] w-full flex-col bg-white font-sans text-[#33405f] lg:h-[calc(100vh-120px)] lg:flex-row">
+    <AppShell activeKey="chat" crumb="Chat" title="Chat">
+      <main className="chat-page flex h-auto min-h-[560px] w-full flex-col bg-white font-sans text-[#33405f] lg:h-[calc(100vh-180px)] lg:flex-row">
         {/* ------------------------- LEFT SIDEBAR ------------------------- */}
         <aside className="flex max-h-[340px] w-full shrink-0 flex-col overflow-hidden px-5 py-4 lg:max-h-none lg:w-[400px] lg:border-r lg:border-[#f1f1e6]">
           {/* profile */}
@@ -575,7 +575,7 @@ export default function Chat() {
         </aside>
 
         {/* --------------------------- MAIN PANE -------------------------- */}
-        <section className="flex min-h-[460px] min-w-0 flex-1 flex-col lg:pr-[170px]">
+        <section className="flex min-h-[460px] min-w-0 flex-1 flex-col">
           {/* recipients bar */}
           <div className="flex items-center gap-2.5 rounded-b-[10px] bg-white py-3 pl-3 pr-1.5 shadow-[0_3px_8px_rgba(0,0,0,0.18)] lg:pl-[50px]">
             <input
@@ -877,7 +877,7 @@ export default function Chat() {
             </section>
           </div>
         )}
-      </div>
+      </main>
       <SiteFooter />
     </AppShell>
   );
