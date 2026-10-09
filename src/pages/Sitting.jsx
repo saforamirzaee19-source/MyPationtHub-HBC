@@ -1,4 +1,5 @@
 import AppShell, { SiteFooter } from "../components/AppShell.jsx";
+import AzamShah from "../assets/images/azamShah.jpg";
 
 import React, { useEffect, useMemo, useState } from "react";
 
@@ -260,21 +261,17 @@ const initialSessions = [
 
 /* ---------------- sections ---------------- */
 function ProfileHeader({ invisible, setInvisible, name }) {
-  const initials = name
-    .split(" ")
-    .map((n) => n[0])
-    .join("")
-    .slice(0, 2)
-    .toUpperCase();
   return (
     <Card
       id="profile"
       className="flex items-center justify-between gap-4 px-5 py-4"
     >
       <div className="flex items-center gap-6">
-        <div className="relative flex h-24 w-24 items-center justify-center overflow-hidden rounded-2xl bg-gradient-to-br from-slate-700 via-amber-500 to-orange-300 text-3xl font-bold text-white shadow-lg shadow-slate-400/50">
-          {initials}
-        </div>
+        <img
+          src={AzamShah}
+          alt={name}
+          className="h-24 w-24 rounded-2xl object-cover object-top shadow-lg shadow-slate-400/50"
+        />
         <div>
           <h1 className="text-2xl font-semibold text-slate-700">{name}</h1>
           <p className="mt-1 font-medium text-slate-500">Patient</p>

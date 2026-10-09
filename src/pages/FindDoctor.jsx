@@ -1,6 +1,13 @@
 import useLegacyScript from "../hooks/useLegacyScript.js";
 import AppShell, { SiteFooter } from "../components/AppShell.jsx";
 import MD from "../assets/images/MD.png";
+import Emergency from "../assets/images/emergency.png";
+import Services from "../assets/images/services.png";
+import Urgent from "../assets/images/Urgent.png";
+import MayaDoctor from "../assets/images/doctor-1.jpg";
+import JonathanDoctor from "../assets/images/doctor-2.jpg";
+import AminaDoctor from "../assets/images/doctor-3.jpg";
+import ElenaDoctor from "../assets/images/doctor-4.jpg";
 
 export default function FindDoctor() {
   useLegacyScript();
@@ -88,7 +95,7 @@ export default function FindDoctor() {
             >
               <a href="/find-clinic">
                 <span>
-                  <img src="../assets/images/MD.png" alt="Heart" />
+                  <img src={MD} alt="Primary care" />
                 </span>
                 <h2>Primary Care and Internal MD</h2>
                 <p>
@@ -103,7 +110,7 @@ export default function FindDoctor() {
             >
               <a href="/find-clinic">
                 <span>
-                  <img src="../assets/images/emergency.png" alt="Emergency" />
+                  <img src={Emergency} alt="Emergency care" />
                 </span>
                 <h2>Emergency Care</h2>
                 <p>We provide emergency care for adults and children</p>
@@ -115,7 +122,7 @@ export default function FindDoctor() {
             >
               <a href="/find-clinic">
                 <span>
-                  <img src="../assets/images/services.png" alt="Services" />
+                  <img src={Services} alt="Imaging services" />
                 </span>
                 <h2>Imaging Services</h2>
                 <p>
@@ -129,7 +136,7 @@ export default function FindDoctor() {
             >
               <a href="/find-clinic">
                 <span>
-                  <img src="../assets/images/urgent.avif" alt="Urgent" />
+                  <img src={Urgent} alt="Urgent care" />
                 </span>
                 <h2>Urgent Care</h2>
                 <p>Walk-in care for everyday illnesses and minor injuries.</p>
@@ -154,7 +161,14 @@ export default function FindDoctor() {
               4 doctors
             </span>
           </div>
-          <div className="doctor-result-grid" id="doctorResultGrid"></div>
+          <div
+            className="doctor-result-grid"
+            id="doctorResultGrid"
+            data-maya-avatar={MayaDoctor}
+            data-jonathan-avatar={AminaDoctor}
+            data-amina-avatar={JonathanDoctor}
+            data-elena-avatar={ElenaDoctor}
+          ></div>
           <p className="empty-services" id="emptyDoctors" hidden>
             No doctors match that search. Try another specialty or location.
           </p>

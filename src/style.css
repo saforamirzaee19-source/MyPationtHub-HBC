@@ -1628,7 +1628,7 @@ body.dark-theme .doctor-page .service-card {
 .doctor-result-card { min-width: 0; padding: 20px; border: 1px solid #dfe9e6; border-radius: 16px; background: #fff; box-shadow: 0 5px 14px rgba(31, 75, 74, 0.05); transition: transform 0.2s ease, box-shadow 0.2s ease; }
 .doctor-result-card:hover { transform: translateY(-3px); box-shadow: 0 14px 24px rgba(31, 75, 74, 0.1); }
 .doctor-card-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 8px; margin-bottom: 17px; }
-.doctor-avatar { display: grid; width: 48px; height: 48px; place-items: center; border-radius: 14px; color: #17464a; font-size: 0.8rem; font-weight: 800; }
+.doctor-avatar { display: block; width: 56px; height: 56px; flex: 0 0 56px; border: 2px solid #fff; border-radius: 50%; object-fit: cover; object-position: center top; box-shadow: 0 3px 10px rgba(31, 75, 74, 0.16); }
 .doctor-avatar.mint { background: #cfeee1; }.doctor-avatar.blue { background: #d5e9f4; }.doctor-avatar.coral { background: #f7d8d0; }.doctor-avatar.gold { background: #f5e7ba; }
 .availability { color: #37806b; font-size: 0.62rem; font-weight: 700; line-height: 1.4; text-align: right; }
 .availability i { display: inline-block; width: 6px; height: 6px; margin-right: 4px; border-radius: 50%; background: #3bae82; }
