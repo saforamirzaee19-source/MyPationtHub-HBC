@@ -33,7 +33,9 @@ join the room, so share it only with the intended participant.
 
 For deployment, serve the frontend over HTTPS and proxy `/api/call-token` to
 the Node API server. Configure the server's environment variables in the
-hosting platform. Room links are bearer links and this sample app has no
+hosting platform. The Vercel and Netlify configuration files in the repository
+also route frontend paths back to `index.html`, as required by the app's
+client-side React Router routes. Room links are bearer links and this sample app has no
 authenticated user/room authorization; do not use it for protected health
 information without appropriate authentication, access controls, and a
 Twilio configuration/Business Associate Agreement suitable for that use.
