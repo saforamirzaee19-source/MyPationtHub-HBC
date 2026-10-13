@@ -29,6 +29,139 @@ body.dark-theme {
   color: #e5e7eb;
 }
 
+.patienthub-alert-popup {
+  width: min(420px, calc(100vw - 32px));
+  padding: 34px 32px 26px;
+  border: 1px solid #e7eee9;
+  border-radius: 22px;
+  box-shadow: 0 24px 70px rgba(22, 44, 35, 0.2);
+  font-family: "Segoe UI", Arial, sans-serif;
+}
+
+.patienthub-alert-popup .patienthub-alert-icon {
+  width: 68px;
+  height: 68px;
+  margin: 0 auto 20px;
+  border-width: 3px;
+}
+
+.patienthub-alert-title {
+  margin: 0;
+  color: #20332d;
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: -0.025em;
+}
+
+.patienthub-alert-message {
+  margin: 9px 0 22px;
+  color: #718078;
+  font-size: 0.98rem;
+  line-height: 1.65;
+}
+
+.patienthub-alert-confirm {
+  min-width: 172px;
+  min-height: 46px;
+  padding: 0 22px;
+  border: 0;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #168a68, #087d83);
+  box-shadow: 0 7px 16px rgba(14, 133, 106, 0.22);
+  color: #fff;
+  font-size: 0.95rem;
+  font-weight: 650;
+  transition:
+    transform 0.18s ease,
+    box-shadow 0.18s ease,
+    filter 0.18s ease;
+}
+
+.patienthub-alert-confirm:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 10px 20px rgba(14, 133, 106, 0.3);
+  filter: brightness(1.04);
+}
+
+.patienthub-alert-confirm:focus-visible {
+  outline: 3px solid rgba(22, 138, 104, 0.35);
+  outline-offset: 3px;
+}
+
+.patienthub-alert-footer {
+  margin: 22px 0 0;
+  padding-top: 14px;
+  border-top: 1px solid #edf1ee;
+  color: #93a099;
+  font-size: 0.75rem;
+  letter-spacing: 0.025em;
+}
+
+.patienthub-alert-show {
+  animation: patienthub-alert-enter 0.24s ease-out;
+}
+
+.patienthub-alert-hide {
+  animation: patienthub-alert-exit 0.16s ease-in;
+}
+
+body.dark-theme .patienthub-alert-popup {
+  border-color: #30423c;
+  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.45);
+}
+
+body.dark-theme .patienthub-alert-title {
+  color: #eff7f4;
+}
+
+body.dark-theme .patienthub-alert-message {
+  color: #aabbb3;
+}
+
+body.dark-theme .patienthub-alert-footer {
+  border-color: #30423c;
+  color: #82968c;
+}
+
+@keyframes patienthub-alert-enter {
+  from {
+    opacity: 0;
+    transform: translateY(10px) scale(0.97);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes patienthub-alert-exit {
+  to {
+    opacity: 0;
+    transform: translateY(4px) scale(0.98);
+  }
+}
+
+@media (max-width: 480px) {
+  .patienthub-alert-popup {
+    padding: 28px 22px 22px;
+    border-radius: 18px;
+  }
+
+  .patienthub-alert-title {
+    font-size: 1.35rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .patienthub-alert-show,
+  .patienthub-alert-hide,
+  .patienthub-alert-confirm {
+    animation: none;
+    transition: none;
+  }
+}
+
 a {
   text-decoration: none;
   color: inherit;

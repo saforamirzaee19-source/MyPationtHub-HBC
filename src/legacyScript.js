@@ -1,3 +1,5 @@
+import ConfirmationLoginMSG from "./components/ConfimatioLoginMSG.jsx";
+
 export default function initLegacyScript(navigate) {
   // Login Form
   const loginForm = document.getElementById("loginForm");
@@ -21,7 +23,7 @@ export default function initLegacyScript(navigate) {
   }
 
   if (loginForm) {
-    loginForm.addEventListener("submit", function (event) {
+    loginForm.addEventListener("submit", async function (event) {
       event.preventDefault();
 
       const username = document.getElementById("username").value.trim();
@@ -41,6 +43,7 @@ export default function initLegacyScript(navigate) {
       }
 
       errorMsg.classList.remove("show");
+      await ConfirmationLoginMSG("login");
       navigate("/dashboard");
     });
   }

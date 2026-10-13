@@ -1,7 +1,9 @@
 import doctorImage from "../assets/images/myPatient.png";
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { FaBell } from "react-icons/fa";
 import Information from "./Information.jsx";
+import ConfirmationLoginMSG from "./ConfimatioLoginMSG.jsx";
 const NAV_ITEMS = [
   { href: "/dashboard", icon: "🏠", label: "Dashboard", key: "dashboard" },
   {
@@ -105,6 +107,7 @@ function Topbar({
   sidebarExpanded,
   theme,
   onToggleTheme,
+  onLogout,
 }) {
   const [notificationsOpen, setNotificationsOpen] = useState(false);
   return (
@@ -169,7 +172,7 @@ function Topbar({
             </section>
           )}
         </div>{" "}
-        <span className="logout" onClick={() => (window.location.href = "/")}>
+        <span className="logout" onClick={onLogout}>
           🔒 Log out
         </span>
         <span>⚙️</span>
@@ -194,6 +197,7 @@ export function SiteFooter() {
 }
 
 export default function AppShell({ activeKey, crumb, title, children }) {
+  const navigate = useNavigate();
   const [theme, setTheme] = useState(() => {
     const savedTheme = localStorage.getItem("theme");
     if (savedTheme === "dark" || savedTheme === "light") return savedTheme;
@@ -256,6 +260,10 @@ export default function AppShell({ activeKey, crumb, title, children }) {
   const closeMobileSidebar = () => setMobileOpen(false);
   const toggleTheme = () =>
     setTheme((currentTheme) => (currentTheme === "dark" ? "light" : "dark"));
+  const handleLogout = async () => {
+    await ConfirmationLoginMSG("logout");
+    navigate("/");
+  };
 
   return (
     <div className="dashboard-layout">
@@ -278,6 +286,7 @@ export default function AppShell({ activeKey, crumb, title, children }) {
           sidebarExpanded={window.innerWidth <= 1000 ? mobileOpen : !collapsed}
           theme={theme}
           onToggleTheme={toggleTheme}
+          onLogout={handleLogout}
         />
         {children}
       </div>
