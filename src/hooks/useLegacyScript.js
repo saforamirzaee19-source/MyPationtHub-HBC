@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import initLegacyScript from "../legacyScript.js";
 
 // script.js was originally included with <script src="script.js"> on every
@@ -8,7 +9,9 @@ import initLegacyScript from "../legacyScript.js";
 // which is the React equivalent of the browser executing the <script> tag
 // after the HTML has been parsed.
 export default function useLegacyScript() {
+  const navigate = useNavigate();
+
   useEffect(() => {
-    initLegacyScript();
-  }, []);
+    initLegacyScript(navigate);
+  }, [navigate]);
 }
