@@ -1,6 +1,4 @@
-import { useNavigate } from "react-router-dom";
-export default function initLegacyScript() {
-  const navigate = useNavigate();
+export default function initLegacyScript(navigate) {
   // Login Form
   const loginForm = document.getElementById("loginForm");
   const passwordInput = document.getElementById("password");
