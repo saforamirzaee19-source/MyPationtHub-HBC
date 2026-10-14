@@ -110,6 +110,53 @@ function Topbar({
   onLogout,
 }) {
   const [notificationsOpen, setNotificationsOpen] = useState(false);
+  const [searchQuery, setSearchQuery] = useState("");
+  const [searchResults, setSearchResults] = useState([]);
+
+  useEffect(() => {
+    const terms = searchQuery.trim().toLocaleLowerCase().split(/\s+/).filter(Boolean);
+    if (!terms.length) {
+      setSearchResults([]);
+      return;
+    }
+
+    const page = document.querySelector(".main");
+    if (!page) {
+      setSearchResults([]);
+      return;
+    }
+
+    const candidates = Array.from(page.querySelectorAll("*")).reverse();
+    const matches = [];
+
+    candidates.forEach((element) => {
+      if (
+        element.closest(
+          ".topbar, .site-footer, [hidden], script, style, noscript, input, textarea, select, option, svg",
+        ) ||
+        element.getClientRects().length === 0
+      ) {
+        return;
+      }
+
+      const text = (element.innerText || element.textContent || "")
+        .replace(/\s+/g, " ")
+        .trim();
+      const normalizedText = text.toLocaleLowerCase();
+      if (!text || !terms.every((term) => normalizedText.includes(term))) return;
+      if (matches.some(({ element: match }) => element.contains(match))) return;
+
+      matches.push({ element, text });
+    });
+
+    setSearchResults(matches.reverse().slice(0, 8));
+  }, [searchQuery]);
+
+  const navigateToSearchResult = (element) => {
+    element.scrollIntoView({ behavior: "smooth", block: "center" });
+    setSearchQuery("");
+  };
+
   return (
     <div className="topbar">
       <div className="topbar-left">
@@ -134,7 +181,41 @@ function Topbar({
         </button>
       </div>
       <div className="topbar-right">
-        <input type="text" placeholder="Type here..." />
+        <div className="topbar-search">
+          <input
+            type="search"
+            value={searchQuery}
+            onChange={(event) => setSearchQuery(event.target.value)}
+            placeholder="Search this page..."
+            aria-label="Search this page"
+            aria-expanded={searchQuery.trim().length > 0}
+            aria-controls="topbar-search-results"
+          />
+          {searchQuery.trim() && (
+            <div
+              className="topbar-search-results"
+              id="topbar-search-results"
+              role="region"
+              aria-label="Search results"
+              aria-live="polite"
+            >
+              {searchResults.length ? (
+                searchResults.map(({ element, text }, index) => (
+                  <button
+                    className="topbar-search-result"
+                    key={`${index}-${text}`}
+                    type="button"
+                    onClick={() => navigateToSearchResult(element)}
+                  >
+                    {text.length > 140 ? `${text.slice(0, 137)}...` : text}
+                  </button>
+                ))
+              ) : (
+                <p className="topbar-search-empty">No results found on this page.</p>
+              )}
+            </div>
+          )}
+        </div>
         <button
           className="theme-toggle"
           type="button"
