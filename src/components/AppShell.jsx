@@ -253,9 +253,10 @@ function Topbar({
             </section>
           )}
         </div>{" "}
-        <span className="logout" onClick={onLogout}>
-          🔒 Log out
-        </span>
+        <button className="logout" type="button" onClick={onLogout}>
+          <span aria-hidden="true">🔒</span>
+          <span>Log out</span>
+        </button>
         <span>⚙️</span>
       </div>
     </div>

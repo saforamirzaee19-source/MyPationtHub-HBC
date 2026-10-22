@@ -165,8 +165,8 @@ export default function FindDoctor() {
             className="doctor-result-grid"
             id="doctorResultGrid"
             data-maya-avatar={MayaDoctor}
-            data-jonathan-avatar={AminaDoctor}
-            data-amina-avatar={JonathanDoctor}
+            data-jonathan-avatar={JonathanDoctor}
+            data-amina-avatar={AminaDoctor}
             data-elena-avatar={ElenaDoctor}
           ></div>
           <p className="empty-services" id="emptyDoctors" hidden>

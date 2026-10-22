@@ -630,7 +630,7 @@ export default function Chat() {
                     className={`flex ${mine ? "justify-end" : "justify-start"}`}
                   >
                     <div
-                      className={`max-w-[70%] break-words rounded-[14px] px-3 py-2 text-base leading-snug ${
+                      className={`chat-message ${mine ? "chat-message--mine" : "chat-message--theirs"} max-w-[70%] break-words rounded-[14px] px-3 py-2 text-base leading-snug ${
                         mine
                           ? "bg-[#c4009a] text-white"
                           : "bg-[#eceef4] text-[#33405f]"

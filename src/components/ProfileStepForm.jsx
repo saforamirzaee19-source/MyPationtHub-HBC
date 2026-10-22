@@ -217,6 +217,13 @@ export default function ProfileStepForm({
             <li
               key={label}
               aria-current={index === activeStep ? "step" : undefined}
+              data-step-state={
+                index === activeStep
+                  ? "active"
+                  : index < activeStep
+                    ? "complete"
+                    : "upcoming"
+              }
               className="relative min-w-0 flex-1 text-center"
             >
               {index > 0 && (
@@ -231,8 +238,8 @@ export default function ProfileStepForm({
               <span
                 className={`relative z-10 mx-auto mb-3.5 grid h-5 w-5 place-items-center rounded-full border text-white ${
                   reached
-                    ? "border-white bg-[linear-gradient(120deg,#a51567,#8a153a,#a2306b,#a90f57)] ring-4 ring-[#a51567]/15"
-                    : "border-[#d9dde6] bg-white"
+                    ? "border-[#a51567] bg-[linear-gradient(120deg,#a51567,#8a153a,#a2306b,#a90f57)] ring-4 ring-[#a51567]/15"
+                    : "border-[#a51567] bg-[#fce7f3]"
                 }`}
               >
                 {index < activeStep && <Check size={11} aria-hidden="true" />}
