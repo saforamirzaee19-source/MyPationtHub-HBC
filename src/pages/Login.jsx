@@ -3,9 +3,6 @@ import useLegacyScript from "../hooks/useLegacyScript.js";
 
 export default function Login() {
   useLegacyScript();
-
-  // Original index.html had <body class="login-page">. React only renders
-  // into #root, so we add/remove that class on the real <body> to match.
   useEffect(() => {
     document.body.classList.add("login-page");
     return () => document.body.classList.remove("login-page");
@@ -16,7 +13,11 @@ export default function Login() {
       {/* Top colorful banner */}
       <header className="login-hero">
         <div className="theme-toggle-wrap">
-          <button className="theme-toggle" type="button" aria-label="Toggle dark mode">
+          <button
+            className="theme-toggle"
+            type="button"
+            aria-label="Toggle dark mode"
+          >
             <span className="toggle-icon">🌙</span>
             <span className="toggle-text">Dark</span>
           </button>
@@ -31,21 +32,53 @@ export default function Login() {
 
         {/* Social login buttons (just for show) */}
         <div className="social-row">
-          <button className="social-btn facebook" title="Sign in with Facebook">f</button>
-          <button className="social-btn google" title="Sign in with Google">G</button>
+          <button className="social-btn facebook" title="Sign in with Facebook">
+            f
+          </button>
+          <button className="social-btn google" title="Sign in with Google">
+            G
+          </button>
         </div>
 
         {/* Error message box, hidden until JS shows it */}
-        <p id="errorMsg" className="error-msg"></p>
+        <p id="errorMsg" className="error-msg" role="alert"></p>
 
         <form id="loginForm">
-          <input type="email" id="username" placeholder="Email or Phone number" required />
+          <input
+            type="text"
+            id="username"
+            name="username"
+            placeholder="Email or Phone number"
+            autoComplete="username"
+            autoCapitalize="none"
+            spellCheck="false"
+            aria-describedby="errorMsg"
+            required
+          />
           <div className="password-field">
-            <input type="password" id="password" placeholder="Please enter your password" required />
-            <button type="button" id="togglePassword" className="password-toggle" aria-label="Show password" title="Show password">👁</button>
+            <input
+              type="password"
+              id="password"
+              name="password"
+              placeholder="Please enter your password"
+              autoComplete="current-password"
+              aria-describedby="errorMsg"
+              required
+            />
+            <button
+              type="button"
+              id="togglePassword"
+              className="password-toggle"
+              aria-label="Show password"
+              title="Show password"
+            >
+              👁
+            </button>
           </div>
 
-          <button type="submit" className="btn btn-signin">SIGN IN</button>
+          <button type="submit" className="btn btn-signin">
+            SIGN IN
+          </button>
 
           <div className="options-row">
             <a href="#">Forgot password?</a>
@@ -57,7 +90,13 @@ export default function Login() {
 
           <div className="divider">or</div>
 
-          <button type="button" className="btn btn-signup" onClick={() => alert("Sign up page not built yet!")}>SIGN UP</button>
+          <button
+            type="button"
+            className="btn btn-signup"
+            onClick={() => alert("Sign up page not built yet!")}
+          >
+            SIGN UP
+          </button>
         </form>
       </main>
 

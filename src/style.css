@@ -295,8 +295,8 @@ body.dark-theme .social-btn {
 .social-btn.facebook { color: #1877f2; }
 .social-btn.google { color: #ea4335; }
 
-/* Email and password inputs */
-.login-card input[type="email"],
+/* Sign-in identifier and password inputs */
+.login-card #username,
 .login-card .password-field input {
   width: 100%;
   padding: 12px 14px;
@@ -340,7 +340,7 @@ body.dark-theme .password-toggle {
   color: #cbd5e1;
 }
 
-body.dark-theme .login-card input[type="email"],
+body.dark-theme .login-card #username,
 body.dark-theme .login-card .password-field input {
   background: #0f172a;
   border-color: #475569;
@@ -886,6 +886,11 @@ body.dark-theme .topbar-search-empty {
 }
 
 .topbar-right .logout {
+  flex: 0 0 auto;
+  white-space: nowrap;
+  padding: 0;
+  border: 0;
+  background: transparent;
   font-size: 0.85rem;
   color: #555;
   display: flex;
@@ -1723,7 +1728,7 @@ body.dark-theme .marketplace-card__description {
   }
 
   .btn,
-  .login-card input[type="email"],
+  .login-card #username,
   .login-card .password-field input {
     font-size: 0.9rem;
   }
@@ -2847,7 +2852,7 @@ body.dark-theme .search-field input,
 body.dark-theme .clinic-search-area input,
 body.dark-theme .clinic-page select,
 body.dark-theme .specialty,
-body.dark-theme .login-card input[type="email"],
+body.dark-theme .login-card #username,
 body.dark-theme .login-card .password-field input {
   border-color: #31543e;
   background: #0f2017;
@@ -3309,7 +3314,7 @@ body.dark-theme .filter-box select {
   color: var(--text-main);
 }
 
-body.dark-theme .login-card input[type="email"],
+body.dark-theme .login-card #username,
 body.dark-theme .login-card .password-field input {
   border-color: var(--border-color);
   background: var(--surface-input);
@@ -3322,7 +3327,7 @@ body.dark-theme textarea::placeholder {
 }
 
 body.dark-theme .login-card input:focus,
-body.dark-theme .login-card input[type="email"]:focus,
+body.dark-theme .login-card #username:focus,
 body.dark-theme .login-card .password-field input:focus,
 body.dark-theme .doctor-page input:focus,
 body.dark-theme .clinic-page input:focus,
@@ -3507,6 +3512,20 @@ body.dark-theme .divider::after {
 
 body.dark-theme .dependent-profile ol li > span:last-child {
   color: var(--text-muted);
+}
+
+body.dark-theme .dependent-profile ol li[data-step-state="active"] > span.relative {
+  border-color: #fff5fb;
+  box-shadow: 0 0 0 4px rgba(240, 138, 185, 0.38);
+}
+
+body.dark-theme .dependent-profile ol li[data-step-state="complete"] > span.relative {
+  border-color: #f8f1f6;
+}
+
+body.dark-theme .dependent-profile ol li[data-step-state="upcoming"] > span.relative {
+  border-color: #8d7183;
+  background: #28212d;
 }
 
 /* Appointment page */
@@ -4577,6 +4596,31 @@ body.dark-theme .appointment-submit-button:hover {
   background: #438fd7;
 }
 
+body.dark-theme .chat-page .chat-message--mine {
+  background-color: #92266f;
+  color: #fff;
+}
+
+body.dark-theme .chat-page .chat-message--theirs {
+  background-color: #302333;
+  color: #f8f1f6;
+}
+
+@media (max-width: 480px) {
+  .appointment-calendar-header {
+    flex-wrap: wrap;
+  }
+
+  .appointment-calendar-header h2 {
+    flex: 1 1 100%;
+  }
+
+  .appointment-calendar-controls {
+    width: 100%;
+    justify-content: space-between;
+  }
+}
+
 /* Keep the shared header visible while scrolling without covering page content. */
 .topbar {
   position: sticky;
@@ -4703,7 +4747,11 @@ body.dark-theme .cursor-effect.is-interactive .cursor-effect__ring {
 
 html {
   scrollbar-width: thin;
-  scrollbar-color: #a2306b #1a0a12;
+  scrollbar-color: #a2306b #fff;
+}
+
+html:has(body.dark-theme) {
+  scrollbar-color: #a2306b #000;
 }
 
 ::-webkit-scrollbar {
@@ -4712,15 +4760,24 @@ html {
 }
 
 ::-webkit-scrollbar-track {
-  background: #1a0a12;
-  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.6);
+  background: #fff;
 }
 
 ::-webkit-scrollbar-thumb {
   background: var(--grad);
   border-radius: 10px;
-  border: 2px solid #1a0a12;
+  border: 2px solid #fff;
   box-shadow: 0 0 8px rgba(165, 21, 103, 0.8);
+}
+
+html:has(body.dark-theme)::-webkit-scrollbar-track,
+body.dark-theme ::-webkit-scrollbar-track {
+  background: #000;
+}
+
+html:has(body.dark-theme)::-webkit-scrollbar-thumb,
+body.dark-theme ::-webkit-scrollbar-thumb {
+  border-color: #000;
 }
 
 ::-webkit-scrollbar-thumb:hover {
@@ -4730,18 +4787,29 @@ html {
 
 .sidebar {
   scrollbar-width: thin;
-  scrollbar-color: #a2306b #1a0a12;
+  scrollbar-color: #a2306b #fff;
+}
+
+body.dark-theme .sidebar {
+  scrollbar-color: #a2306b #000;
 }
 
 .sidebar::-webkit-scrollbar-track {
-  background: #1a0a12;
-  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.6);
+  background: #fff;
 }
 
 .sidebar::-webkit-scrollbar-thumb {
   background: var(--grad);
-  border: 2px solid #1a0a12;
+  border: 2px solid #fff;
   box-shadow: 0 0 8px rgba(165, 21, 103, 0.8);
+}
+
+body.dark-theme .sidebar::-webkit-scrollbar-track {
+  background: #000;
+}
+
+body.dark-theme .sidebar::-webkit-scrollbar-thumb {
+  border-color: #000;
 }
 
 .sidebar::-webkit-scrollbar-thumb:hover {

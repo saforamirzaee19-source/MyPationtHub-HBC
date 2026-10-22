@@ -27,11 +27,24 @@ export default function initLegacyScript(navigate) {
       event.preventDefault();
 
       const username = document.getElementById("username").value.trim();
-      const password = document.getElementById("password").value.trim();
+      const password = document.getElementById("password").value;
       const errorMsg = document.getElementById("errorMsg");
 
       if (username === "" || password === "") {
         errorMsg.textContent = "Please fill in both fields.";
+        errorMsg.classList.add("show");
+        return;
+      }
+
+      const isEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(username);
+      const phoneDigits = username.replace(/\D/g, "");
+      const isPhone =
+        /^\+?[0-9\s().-]+$/.test(username) &&
+        phoneDigits.length >= 7 &&
+        phoneDigits.length <= 15;
+
+      if (!isEmail && !isPhone) {
+        errorMsg.textContent = "Enter a valid email address or phone number.";
         errorMsg.classList.add("show");
         return;
       }
