@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import { Link } from "react-router-dom";
 import useLegacyScript from "../hooks/useLegacyScript.js";
 
 export default function Login() {
@@ -90,13 +91,9 @@ export default function Login() {
 
           <div className="divider">or</div>
 
-          <button
-            type="button"
-            className="btn btn-signup"
-            onClick={() => alert("Sign up page not built yet!")}
-          >
+          <Link to="/signup" className="btn btn-signup">
             SIGN UP
-          </button>
+          </Link>
         </form>
       </main>
 

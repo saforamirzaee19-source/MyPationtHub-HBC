@@ -1,6 +1,6 @@
 import doctorImage from "../assets/images/myPatient.png";
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { FaBell } from "react-icons/fa";
 import Information from "./Information.jsx";
 import ConfirmationLoginMSG from "./ConfimatioLoginMSG.jsx";
@@ -161,7 +161,17 @@ function Topbar({
     <div className="topbar">
       <div className="topbar-left">
         <div>
-          <div className="crumbs">🏠 / {crumb}</div>
+          <div className="crumbs">
+            <Link
+              to="/dashboard"
+              className="topbar-home-link"
+              aria-label="Go to dashboard"
+              title="Dashboard"
+            >
+              🏠
+            </Link>{" "}
+            / {crumb}
+          </div>
           <h2>{title}</h2>
         </div>
         <button
@@ -257,7 +267,14 @@ function Topbar({
           <span aria-hidden="true">🔒</span>
           <span>Log out</span>
         </button>
-        <span>⚙️</span>
+        <Link
+          to="/sitting"
+          className="topbar-settings-link"
+          aria-label="Go to settings"
+          title="Settings"
+        >
+          ⚙️
+        </Link>
       </div>
     </div>
   );

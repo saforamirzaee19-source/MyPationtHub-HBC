@@ -250,9 +250,113 @@ body.dark-theme .theme-toggle {
   z-index: 2;
 }
 
+.signup-card {
+  max-width: 520px;
+}
+
+.signup-intro {
+  margin: -10px 0 20px;
+  color: #777;
+  font-size: 0.9rem;
+  text-align: center;
+}
+
+.signup-form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0 14px;
+}
+
+.signup-field {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  margin-bottom: 14px;
+  color: #444;
+  font-size: 0.88rem;
+  font-weight: 600;
+}
+
+.signup-field span {
+  display: inline;
+  color: #777;
+  font-size: 0.8rem;
+  font-weight: 400;
+}
+
+.signup-field-full {
+  grid-column: 1 / -1;
+}
+
+.signup-field input {
+  width: 100%;
+  min-width: 0;
+  padding: 11px 12px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  outline: none;
+  background: #fff;
+  color: #333;
+  font: inherit;
+  font-weight: 400;
+}
+
+.signup-field input:focus {
+  border-color: #a2306b;
+}
+
+.signup-consent {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  margin: 2px 0 14px;
+  color: #555;
+  font-size: 0.85rem;
+}
+
+.signup-consent input {
+  margin-top: 3px;
+  accent-color: #a2306b;
+}
+
+.signup-feedback {
+  margin: 0 0 12px;
+  padding: 10px 12px;
+  border-radius: 6px;
+  background: #fff4e5;
+  color: #805400;
+  font-size: 0.85rem;
+}
+
+.signup-login-link {
+  margin: 4px 0 0;
+  color: #666;
+  font-size: 0.9rem;
+  text-align: center;
+}
+
+.signup-login-link a {
+  color: #a2306b;
+  font-weight: 600;
+}
+
 body.dark-theme .login-card {
   background: #1e293b;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+}
+
+body.dark-theme .signup-intro,
+body.dark-theme .signup-field,
+body.dark-theme .signup-field span,
+body.dark-theme .signup-consent,
+body.dark-theme .signup-login-link {
+  color: #cbd5e1;
+}
+
+body.dark-theme .signup-field input {
+  border-color: #475569;
+  background: #0f172a;
+  color: #f8fafc;
 }
 
 .login-card h2 {
@@ -750,6 +854,23 @@ body.dark-theme .topbar {
 .topbar .crumbs {
   font-size: 0.8rem;
   color: #999;
+}
+
+.topbar-home-link,
+.topbar-settings-link {
+  color: inherit;
+  text-decoration: none;
+}
+
+.topbar-home-link:focus-visible,
+.topbar-settings-link:focus-visible {
+  outline: 2px solid #a2306b;
+  outline-offset: 3px;
+  border-radius: 3px;
+}
+
+.topbar-settings-link {
+  line-height: 1;
 }
 
 body.dark-theme .topbar .crumbs {
@@ -1721,6 +1842,14 @@ body.dark-theme .marketplace-card__description {
 @media (max-width: 480px) {
   .login-card h2 {
     font-size: 1.05rem;
+  }
+
+  .signup-form-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .signup-field-full {
+    grid-column: auto;
   }
 
   .social-row {

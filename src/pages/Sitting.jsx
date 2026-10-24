@@ -3,6 +3,9 @@ import AzamShah from "../assets/images/azamShah.jpg";
 
 import React, { useEffect, useMemo, useState } from "react";
 
+const PROFILE_PICTURE_STORAGE_KEY = "myPatientHub.profilePicture";
+const MAX_PROFILE_PICTURE_SIZE = 2 * 1024 * 1024;
+
 /* ---------------- icons ---------------- */
 const Svg = ({ children, className = "h-5 w-5", viewBox = "0 0 24 24" }) => (
   <svg
@@ -260,7 +263,14 @@ const initialSessions = [
 ];
 
 /* ---------------- sections ---------------- */
-function ProfileHeader({ invisible, setInvisible, name }) {
+function ProfileHeader({
+  invisible,
+  setInvisible,
+  name,
+  profilePicture,
+  onProfilePictureSelect,
+  profilePictureError,
+}) {
   return (
     <Card
       id="profile"
@@ -268,13 +278,27 @@ function ProfileHeader({ invisible, setInvisible, name }) {
     >
       <div className="flex items-center gap-6">
         <img
-          src={AzamShah}
-          alt={name}
+          src={profilePicture}
+          alt={`${name}'s profile`}
           className="h-24 w-24 rounded-2xl object-cover object-top shadow-lg shadow-slate-400/50"
         />
         <div>
           <h1 className="text-2xl font-semibold text-slate-700">{name}</h1>
           <p className="mt-1 font-medium text-slate-500">Patient</p>
+          <label className="mt-3 inline-flex cursor-pointer items-center rounded-lg border border-slate-700 bg-white px-4 py-2.5 text-xs font-bold uppercase tracking-wide text-slate-700 transition hover:bg-slate-50 focus-within:outline-none focus-within:ring-4 focus-within:ring-sky-100">
+            Edit Profile Picture
+            <input
+              type="file"
+              accept="image/*"
+              className="sr-only"
+              onChange={onProfilePictureSelect}
+            />
+          </label>
+          {profilePictureError && (
+            <p className="mt-2 text-sm font-medium text-red-500" role="alert">
+              {profilePictureError}
+            </p>
+          )}
         </div>
       </div>
       <div className="flex items-center gap-3 self-start pt-4 text-sm text-slate-600">
@@ -697,6 +721,10 @@ export default function Sitting() {
   const [active, setActive] = useState("basic-info");
   const [invisible, setInvisible] = useState(true);
   const [saved, setSaved] = useState(false);
+  const [profilePicture, setProfilePicture] = useState(
+    () => localStorage.getItem(PROFILE_PICTURE_STORAGE_KEY) || AzamShah,
+  );
+  const [profilePictureError, setProfilePictureError] = useState("");
   const [form, setForm] = useState({
     firstName: "Azam",
     lastName: "Shah",
@@ -741,6 +769,44 @@ export default function Sitting() {
     setTimeout(() => setSaved(false), 2500);
   };
 
+  const handleProfilePictureSelect = (event) => {
+    const file = event.target.files?.[0];
+    event.target.value = "";
+    if (!file) return;
+
+    if (!file.type.startsWith("image/")) {
+      setProfilePictureError("Please choose an image file.");
+      return;
+    }
+
+    if (file.size > MAX_PROFILE_PICTURE_SIZE) {
+      setProfilePictureError("The image must be 2 MB or smaller.");
+      return;
+    }
+
+    const reader = new FileReader();
+    reader.onload = () => {
+      if (typeof reader.result !== "string") {
+        setProfilePictureError("The selected image could not be read.");
+        return;
+      }
+
+      try {
+        localStorage.setItem(PROFILE_PICTURE_STORAGE_KEY, reader.result);
+        setProfilePicture(reader.result);
+        setProfilePictureError("");
+      } catch {
+        setProfilePictureError(
+          "The image could not be saved. Please choose a smaller image.",
+        );
+      }
+    };
+    reader.onerror = () => {
+      setProfilePictureError("The selected image could not be read.");
+    };
+    reader.readAsDataURL(file);
+  };
+
   const fullName = `${form.firstName} ${form.lastName}`.trim() || "Your Name";
 
   return (
@@ -777,6 +843,9 @@ export default function Sitting() {
                 invisible={invisible}
                 setInvisible={setInvisible}
                 name={fullName}
+                profilePicture={profilePicture}
+                onProfilePictureSelect={handleProfilePictureSelect}
+                profilePictureError={profilePictureError}
               />
               <BasicInfo
                 form={form}
