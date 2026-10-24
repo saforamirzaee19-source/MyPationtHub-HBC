@@ -1,6 +1,7 @@
 import { FaCreditCard } from "react-icons/fa";
 import { SiSpotify } from "react-icons/si";
 
+// Notification Component
 const DEFAULT_NOTIFICATIONS = [
   {
     title: "New Message From Laura",
@@ -23,17 +24,30 @@ export default function Information({ notifications = DEFAULT_NOTIFICATIONS }) {
   return (
     <div className="information">
       {notifications.map((notification) => (
-        <article className="information-item" key={`${notification.title}-${notification.time}`}>
+        <article
+          className="information-item"
+          key={`${notification.title}-${notification.time}`}
+        >
           {notification.icon === "spotify" ? (
-            <span className="information-icon information-icon-spotify" aria-label="Spotify">
+            <span
+              className="information-icon information-icon-spotify"
+              aria-label="Spotify"
+            >
               <SiSpotify aria-hidden="true" />
             </span>
           ) : notification.icon === "payment" ? (
-            <span className="information-icon information-icon-payment" aria-label="Payment">
+            <span
+              className="information-icon information-icon-payment"
+              aria-label="Payment"
+            >
               <FaCreditCard aria-hidden="true" />
             </span>
           ) : notification.image ? (
-            <img src={notification.image} alt="" className="information-image" />
+            <img
+              src={notification.image}
+              alt=""
+              className="information-image"
+            />
           ) : null}
           <div>
             <p>{notification.title}</p>

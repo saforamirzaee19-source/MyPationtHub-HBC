@@ -4773,6 +4773,8 @@ body.dark-theme .topbar {
   }
 }
 
+
+/* Cursor Style  */
 .cursor-effect {
   --cursor-x: -100px;
   --cursor-y: -100px;

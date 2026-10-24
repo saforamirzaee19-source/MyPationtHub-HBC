@@ -98,7 +98,7 @@ export default function initLegacyScript(navigate) {
   const preferredTheme = window.matchMedia("(prefers-color-scheme: dark)")
     .matches
     ? "dark"
-    : "light"; //===> CSS Media Featur
+    : "light";
   applyTheme(savedTheme || preferredTheme);
 
   themeButtons.forEach((button) => {

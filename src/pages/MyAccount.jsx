@@ -155,7 +155,7 @@ function CreditCard() {
         <div className="flex gap-8">
           <div>
             <p className="text-xs text-slate-300">Card Holder</p>
-            <p className="font-semibold">Jack Peterson</p>
+            <p className="font-semibold">Safora Miraee</p>
           </div>
           <div>
             <p className="text-xs text-slate-300">Expires</p>

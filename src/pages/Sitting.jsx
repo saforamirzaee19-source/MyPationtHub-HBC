@@ -459,6 +459,7 @@ function BasicInfo({ form, setForm, onSave, saved }) {
 function ChangePassword() {
   const [pw, setPw] = useState({ current: "", next: "", confirm: "" });
   const [done, setDone] = useState(false);
+  const [showPasswords, setShowPasswords] = useState(false);
   const set = (k) => (e) => {
     setDone(false);
     setPw((p) => ({ ...p, [k]: e.target.value }));
@@ -469,7 +470,6 @@ function ChangePassword() {
       { text: "One special characters", ok: /[^A-Za-z0-9]/.test(pw.next) },
       { text: "Min 6 characters", ok: pw.next.length >= 6 },
       { text: "One number (2 are recommended)", ok: /\d/.test(pw.next) },
-      { text: "Change it often", ok: null },
     ],
     [pw.next],
   );
@@ -480,7 +480,19 @@ function ChangePassword() {
 
   return (
     <Card id="change-password" className="p-7">
-      <h2 className="text-xl font-semibold text-slate-700">Change Password</h2>
+      <div className="flex flex-wrap items-center justify-between gap-3">
+        <h2 className="text-xl font-semibold text-slate-700">
+          Change Password
+        </h2>
+        <button
+          type="button"
+          className="rounded-lg px-3 py-2 text-sm font-semibold text-slate-600 transition hover:bg-slate-50 hover:text-slate-800 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-sky-100"
+          aria-pressed={showPasswords}
+          onClick={() => setShowPasswords((visible) => !visible)}
+        >
+          {showPasswords ? "Hide passwords" : "Show passwords"}
+        </button>
+      </div>
       <form
         onSubmit={(e) => {
           e.preventDefault();
@@ -492,7 +504,7 @@ function ChangePassword() {
         <div className="mt-6 space-y-6">
           <Input
             id="curPw"
-            type="password"
+            type={showPasswords ? "text" : "password"}
             label="Current Password"
             placeholder="Current Password"
             value={pw.current}
@@ -500,7 +512,7 @@ function ChangePassword() {
           />
           <Input
             id="newPw"
-            type="password"
+            type={showPasswords ? "text" : "password"}
             label="New Password"
             placeholder="New Password"
             value={pw.next}
@@ -509,7 +521,7 @@ function ChangePassword() {
           <div>
             <Input
               id="confPw"
-              type="password"
+              type={showPasswords ? "text" : "password"}
               label="Confirm New Password"
               placeholder="Confirm Password"
               value={pw.confirm}
@@ -722,12 +734,12 @@ export default function Sitting() {
   const [invisible, setInvisible] = useState(true);
   const [saved, setSaved] = useState(false);
   const [profilePicture, setProfilePicture] = useState(
-    () => localStorage.getItem(PROFILE_PICTURE_STORAGE_KEY) || AzamShah,
+    () => localStorage.getItem(PROFILE_PICTURE_STORAGE_KEY) || SaforaMirzaee,
   );
   const [profilePictureError, setProfilePictureError] = useState("");
   const [form, setForm] = useState({
-    firstName: "Azam",
-    lastName: "Shah",
+    firstName: "Safora",
+    lastName: "Mirzaee",
     gender: "",
     month: "",
     day: "",

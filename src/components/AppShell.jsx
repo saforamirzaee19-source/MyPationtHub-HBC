@@ -4,6 +4,9 @@ import { Link, useNavigate } from "react-router-dom";
 import { FaBell } from "react-icons/fa";
 import Information from "./Information.jsx";
 import ConfirmationLoginMSG from "./ConfimatioLoginMSG.jsx";
+import { Variable } from "lucide-react";
+
+// Sidbar Variables
 const NAV_ITEMS = [
   { href: "/dashboard", icon: "🏠", label: "Dashboard", key: "dashboard" },
   {
@@ -57,6 +60,8 @@ const NAV_ITEMS = [
   { href: "/sitting", icon: "⚙️", label: "Settings", key: "settings" },
 ];
 
+// Sidbar function
+
 function Sidebar({ activeKey, collapsed, open, onNavigate }) {
   return (
     <aside
@@ -100,6 +105,7 @@ function Sidebar({ activeKey, collapsed, open, onNavigate }) {
   );
 }
 
+// Header or topbar function
 function Topbar({
   crumb,
   title,
@@ -114,7 +120,11 @@ function Topbar({
   const [searchResults, setSearchResults] = useState([]);
 
   useEffect(() => {
-    const terms = searchQuery.trim().toLocaleLowerCase().split(/\s+/).filter(Boolean);
+    const terms = searchQuery
+      .trim()
+      .toLocaleLowerCase()
+      .split(/\s+/)
+      .filter(Boolean);
     if (!terms.length) {
       setSearchResults([]);
       return;
@@ -143,7 +153,8 @@ function Topbar({
         .replace(/\s+/g, " ")
         .trim();
       const normalizedText = text.toLocaleLowerCase();
-      if (!text || !terms.every((term) => normalizedText.includes(term))) return;
+      if (!text || !terms.every((term) => normalizedText.includes(term)))
+        return;
       if (matches.some(({ element: match }) => element.contains(match))) return;
 
       matches.push({ element, text });
@@ -221,7 +232,9 @@ function Topbar({
                   </button>
                 ))
               ) : (
-                <p className="topbar-search-empty">No results found on this page.</p>
+                <p className="topbar-search-empty">
+                  No results found on this page.
+                </p>
               )}
             </div>
           )}
@@ -280,6 +293,7 @@ function Topbar({
   );
 }
 
+//  Footer
 export function SiteFooter() {
   return (
     <footer className="site-footer">

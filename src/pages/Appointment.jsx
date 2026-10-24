@@ -124,9 +124,7 @@ const Card = ({ className = "", children }) => (
 const Avatar = ({ name }) => {
   const photo = DOCTOR_PHOTOS[name];
   return (
-    <div
-      className="flex h-12 w-12 shrink-0 items-center justify-center overflow-hidden rounded-full bg-gradient-to-br from-slate-700 to-slate-900 text-sm font-semibold text-white shadow-md"
-    >
+    <div className="flex h-12 w-12 shrink-0 items-center justify-center overflow-hidden rounded-full bg-gradient-to-br from-slate-700 to-slate-900 text-sm font-semibold text-white shadow-md">
       {photo ? (
         <img className="appointment-avatar-image" src={photo} alt={name} />
       ) : (
@@ -190,7 +188,10 @@ function AppointmentRow({ item, onDelete, onComplete }) {
           {TYPES[item.type].label}
         </p>
       </div>
-      <p className="w-24 text-right text-xs leading-snug text-slate-500" title={fmtLong(item.date)}>
+      <p
+        className="w-24 text-right text-xs leading-snug text-slate-500"
+        title={fmtLong(item.date)}
+      >
         {fmtShort(item.date)}
       </p>
       <RowMenu onDelete={onDelete} onComplete={onComplete} />
@@ -286,16 +287,10 @@ function Calendar({ cursor, setCursor, appointments }) {
             today
           </button>
           <div className="appointment-month-controls">
-            <button
-              onClick={() => shift(-1)}
-              aria-label="Previous month"
-            >
+            <button onClick={() => shift(-1)} aria-label="Previous month">
               ‹
             </button>
-            <button
-              onClick={() => shift(1)}
-              aria-label="Next month"
-            >
+            <button onClick={() => shift(1)} aria-label="Next month">
               ›
             </button>
           </div>
@@ -318,13 +313,7 @@ function Calendar({ cursor, setCursor, appointments }) {
               className={`appointment-day${inMonth ? "" : " outside-month"}${key === today ? " is-today" : ""}`}
             >
               <p className="appointment-day-number">
-                <span
-                  className={
-                    key === today
-                      ? "today-number"
-                      : ""
-                  }
-                >
+                <span className={key === today ? "today-number" : ""}>
                   {d.getDate()}
                 </span>
               </p>
@@ -361,9 +350,7 @@ function BookingForm({ onSubmit, defaultDate }) {
   const field = "appointment-form-field";
   return (
     <Card className="appointment-card appointment-booking-form">
-      <h2>
-        New booking
-      </h2>
+      <h2>New booking</h2>
       <div className="appointment-form-fields">
         <label>
           Doctor
@@ -379,11 +366,7 @@ function BookingForm({ onSubmit, defaultDate }) {
         </label>
         <label>
           Appointment type
-          <select
-            className={field}
-            value={form.type}
-            onChange={set("type")}
-          >
+          <select className={field} value={form.type} onChange={set("type")}>
             {TYPE_KEYS.map((k) => (
               <option key={k} value={k}>
                 {TYPES[k].label}
@@ -575,113 +558,109 @@ export default function Appointment() {
         ) : (
           <>
             <div className="appointment-stats">
-                <StatCard
-                  title="Procedures Taken"
-                  value={trend.procedures.reduce((a, b) => a + b, 0)}
-                  delta={diff(trend.procedures)}
-                  series={trend.procedures}
-                  categories={trend.categories}
-                />
-                <StatCard
-                  title="Treatments Taken"
-                  value={trend.treatments.reduce((a, b) => a + b, 0)}
-                  delta={diff(trend.treatments)}
-                  series={trend.treatments}
-                  categories={trend.categories}
-                />
-                <button
-                  type="button"
-                  onClick={() => setTab("booking")}
-                  className="appointment-quick-book"
-                >
-                  <span className="appointment-quick-book-icon">+</span>
-                  <span>
-                    <strong>Book an appointment</strong>
-                    <small>Choose a doctor and time</small>
-                  </span>
-                  <span className="appointment-quick-book-arrow">→</span>
-                </button>
+              <StatCard
+                title="Procedures Taken"
+                value={trend.procedures.reduce((a, b) => a + b, 0)}
+                delta={diff(trend.procedures)}
+                series={trend.procedures}
+                categories={trend.categories}
+              />
+              <StatCard
+                title="Treatments Taken"
+                value={trend.treatments.reduce((a, b) => a + b, 0)}
+                delta={diff(trend.treatments)}
+                series={trend.treatments}
+                categories={trend.categories}
+              />
+              <button
+                type="button"
+                onClick={() => setTab("booking")}
+                className="appointment-quick-book"
+              >
+                <span className="appointment-quick-book-icon">+</span>
+                <span>
+                  <strong>Book an appointment</strong>
+                  <small>Choose a doctor and time</small>
+                </span>
+                <span className="appointment-quick-book-arrow">→</span>
+              </button>
             </div>
 
             <div className="appointment-content-grid">
               <main className="appointment-main-column">
-              <Calendar
-                cursor={cursor}
-                setCursor={setCursor}
-                appointments={appointments}
-              />
+                <Calendar
+                  cursor={cursor}
+                  setCursor={setCursor}
+                  appointments={appointments}
+                />
               </main>
 
               <aside className="appointment-side-column">
-              <Card className="appointment-card appointment-chart-card">
-                <h3>Appointment activity</h3>
-                <ReactCharts
-                  type="bar"
-                  height={270}
-                  labels={monthWindow.map((m) => MONTHS[m.getMonth()])}
-                  datasets={stackedSeries.map((item, index) => ({
-                    label: item.name,
-                    data: item.data,
-                    backgroundColor: TYPES[TYPE_KEYS[index]].color,
-                    borderRadius: 6,
-                    stack: "appointments",
-                  }))}
-                  options={stackedOptions}
-                />
-              </Card>
+                <Card className="appointment-card appointment-chart-card">
+                  <h3>Appointment activity</h3>
+                  <ReactCharts
+                    type="bar"
+                    height={270}
+                    labels={monthWindow.map((m) => MONTHS[m.getMonth()])}
+                    datasets={stackedSeries.map((item, index) => ({
+                      label: item.name,
+                      data: item.data,
+                      backgroundColor: TYPES[TYPE_KEYS[index]].color,
+                      borderRadius: 6,
+                      stack: "appointments",
+                    }))}
+                    options={stackedOptions}
+                  />
+                </Card>
 
-              <Card className="appointment-card appointment-list-card">
-                <h3>
-                  Previous Appointments
-                </h3>
-                <ul>
-                  {past.slice(0, 8).map((a) => (
-                    <AppointmentRow
-                      key={a.id}
-                      item={a}
-                      onDelete={() => remove(a.id)}
-                    />
-                  ))}
-                  {past.length === 0 && (
-                    <p className="appointment-empty-state">
-                      No previous appointments.
-                    </p>
-                  )}
-                </ul>
-              </Card>
+                <Card className="appointment-card appointment-list-card">
+                  <h3>Previous Appointments</h3>
+                  <ul>
+                    {past.slice(0, 8).map((a) => (
+                      <AppointmentRow
+                        key={a.id}
+                        item={a}
+                        onDelete={() => remove(a.id)}
+                      />
+                    ))}
+                    {past.length === 0 && (
+                      <p className="appointment-empty-state">
+                        No previous appointments.
+                      </p>
+                    )}
+                  </ul>
+                </Card>
 
-              <Card className="appointment-card appointment-list-card">
-                <h3>
-                  Upcoming Appointments
-                </h3>
-                <div className="appointment-range-tabs">
-                  {["Days", "Months", "Years"].map((r) => (
-                    <button
-                      key={r}
-                      onClick={() => setRange(r)}
-                      className={range === r ? "active" : ""}
-                    >
-                      {r}
-                    </button>
-                  ))}
-                </div>
-                <ul>
-                  {upcoming.map((a) => (
-                    <AppointmentRow
-                      key={a.id}
-                      item={a}
-                      onDelete={() => remove(a.id)}
-                      onComplete={() => markDone(a.id)}
-                    />
-                  ))}
-                  {upcoming.length === 0 && (
-                    <p className="appointment-empty-state">
-                      Nothing scheduled in this range. Book a new appointment to
-                      get started.
-                    </p>
-                  )}
-                </ul>
-              </Card>
+                <Card className="appointment-card appointment-list-card">
+                  <h3>Upcoming Appointments</h3>
+                  <div className="appointment-range-tabs">
+                    {["Days", "Months", "Years"].map((r) => (
+                      <button
+                        key={r}
+                        onClick={() => setRange(r)}
+                        className={range === r ? "active" : ""}
+                      >
+                        {r}
+                      </button>
+                    ))}
+                  </div>
+                  <ul>
+                    {upcoming.map((a) => (
+                      <AppointmentRow
+                        key={a.id}
+                        item={a}
+                        onDelete={() => remove(a.id)}
+                        onComplete={() => markDone(a.id)}
+                      />
+                    ))}
+                    {upcoming.length === 0 && (
+                      <p className="appointment-empty-state">
+                        Nothing scheduled in this range. Book a new appointment
+                        to get started.
+                      </p>
+                    )}
+                  </ul>
+                </Card>
               </aside>
             </div>
           </>
