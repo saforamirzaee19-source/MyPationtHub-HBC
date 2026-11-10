@@ -734,7 +734,7 @@ export default function Sitting() {
   const [invisible, setInvisible] = useState(true);
   const [saved, setSaved] = useState(false);
   const [profilePicture, setProfilePicture] = useState(
-    () => localStorage.getItem(PROFILE_PICTURE_STORAGE_KEY) || SaforaMirzaee,
+    () => localStorage.getItem(PROFILE_PICTURE_STORAGE_KEY) || AzamShah,
   );
   const [profilePictureError, setProfilePictureError] = useState("");
   const [form, setForm] = useState({
