@@ -1652,7 +1652,7 @@ body.dark-theme .site-footer .links a {
     height: 100vh;
     width: 250px;
     max-width: 82vw;
-    z-index: 20;
+    z-index: 40;
     transform: translateX(-100%);
     box-shadow: 4px 0 20px rgba(0, 0, 0, 0.25);
   }
